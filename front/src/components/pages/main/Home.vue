@@ -1,23 +1,22 @@
 <template>
   <div class="home">
     <Header />
-    <VideoLink />
-    <VideoLink />
-    <Navigation />
+    <VideoLinkList />
+    <Footer />
   </div>
 </template>
 
 <script scoped lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Header from "../organisms/Header.vue";
-import VideoLink from "../organisms/VideoLink.vue"
-import Navigation from "../organisms/Navigation.vue";
+import Header from "../../organisms/Header.vue";
+import VideoLinkList from "../../organisms/VideoLinkList.vue"
+import Footer from "../../organisms/Footer.vue";
 
 @Component({
   components: {
     Header,
-    VideoLink,
-    Navigation
+    VideoLinkList,
+    Footer
   },
 })
 export default class Home extends Vue {}

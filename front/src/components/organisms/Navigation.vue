@@ -1,10 +1,12 @@
 <template>
+<footer>
     <div id="navigation">
       <router-link to="/">Home</router-link> |
       <router-link to="/ranking">Ranking</router-link> |
       <router-link to="/search">Search</router-link> |
       <router-link to="/favorite">Favorite</router-link> |
     </div>
+</footer>
 </template>
 
 <script lang="ts">
@@ -14,6 +16,7 @@ export default class Navigation extends Vue {}
 </script>
 
 <style scoped lang="scss">
+
 $color: #42b983;
 #navigation {
   padding: 30px;

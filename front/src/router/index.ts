@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../components/pages/Home.vue";
-import Ranking from "../components/pages/Ranking.vue";
-import Search from "../components/pages/Search.vue";
-import Favorite from "../components/pages/Favorite.vue";
+import Home from "../components/pages/main/Home.vue";
+import Ranking from "../components/pages/main/Ranking.vue";
+import Search from "../components/pages/main/Search.vue";
+import Favorite from "../components/pages/main/Favorite.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
