@@ -1,7 +1,6 @@
 <template>
   <div class="user-icon">
-    user
-    <Img />
+    <Img path="test/bosatu.png" />
   </div>
 </template>
 
@@ -17,5 +16,14 @@ import Img from "../atoms/Img.vue";
 export default class UserIcon extends Vue {}
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.user-icon img {
+    width: 25px;
+    height: 25px;
+    border-radius: 40%;
+    box-shadow: 0 2px 6px #c1ced7;
+    margin: 20px 0 10px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
 </style>

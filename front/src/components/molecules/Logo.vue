@@ -1,7 +1,6 @@
 <template>
   <div class="logo">
-    logo
-    <Img />
+    <Img path="logo.png"/>
   </div>
 </template>
 
@@ -17,5 +16,8 @@ import Img from "../atoms/Img.vue";
 export default class Logo extends Vue {}
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.logo img {
+  width: 30vw;
+}
 </style>

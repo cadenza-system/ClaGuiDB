@@ -1,14 +1,24 @@
 <template>
   <div class="img">
-  <img src="../../assets/logo.png" alt="">
+    <img :src="loadImg()" alt="">
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue ,Prop} from "vue-property-decorator";
 
 @Component
-export default class Img extends Vue {}
+export default class Img extends Vue {
+  @Prop() private path!: string;
+  @Prop() private class!: string;
+
+  /** 
+   * パスを返す
+   */
+  private loadImg(): any {
+    return require(`../../assets/${this.path}`);
+  }
+}
 </script>
 
 <style scoped lang="scss">
