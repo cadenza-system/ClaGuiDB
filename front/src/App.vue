@@ -4,7 +4,11 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import "./scss/color.scss";
+body {
+  background-color: $dark-theme-color;
+}
 $color: #42b983;
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
