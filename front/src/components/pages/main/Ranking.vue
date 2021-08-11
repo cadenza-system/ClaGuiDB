@@ -1,7 +1,9 @@
 <template>
   <div class="ranking">
     <Header />
-    <h2>RANKING</h2>
+    <Content>
+      <VideoLinkList />
+    </Content>
     <Footer />
   </div>
 </template>
@@ -10,11 +12,15 @@
 import { Component, Vue } from "vue-property-decorator";
 import Header from "../../organisms/Header.vue";
 import Footer from "../../organisms/Footer.vue";
+import VideoLinkList from "../../organisms/VideoLinkList.vue"
+import Content from "../../organisms/Content.vue";
 
 @Component({
   components: {
     Header,
-    Footer
+    Footer,
+    VideoLinkList,
+    Content
   },
 })
 export default class Ranking extends Vue {}
