@@ -14,6 +14,7 @@ import Header from "../../organisms/Header.vue";
 import VideoLinkList from "../../organisms/VideoLinkList.vue"
 import Footer from "../../organisms/Footer.vue";
 import Content from "../../organisms/Content.vue";
+import CurentPushedPanel from "../../../router/nav/CurrentPushedPanel";
 
 @Component({
   components: {
@@ -23,5 +24,10 @@ import Content from "../../organisms/Content.vue";
     Content
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  constructor() {
+    CurentPushedPanel.pushHome();
+    super()
+  }
+}
 </script>

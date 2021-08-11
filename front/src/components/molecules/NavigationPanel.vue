@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation-panel">
+  <div class="navigation-panel" :class="setClass()">
     <router-link :to="link">
       <div class="nav-icon">
         <Img :path="iconPath" />
@@ -24,10 +24,21 @@ export default class NavigationPanel extends Vue {
   @Prop() private link!: string;
   @Prop() private iconPath!: string;
   @Prop() private label!: string;
+  @Prop() private onPushed!: boolean;
+
+  setClass(): string {
+    if (this.onPushed) {
+      return "onPushed"
+    }
+
+    return "";
+  }
 }
 </script>
 
 <style lang="scss">
+@import "../../scss/color.scss";
+
 .navigation-panel {
   display: flex;
   flex-direction: column;
@@ -45,4 +56,7 @@ export default class NavigationPanel extends Vue {
   font-size: 10px;
 }
 
+.onPushed {
+  background-color: $dark-theme-color;
+}
 </style>

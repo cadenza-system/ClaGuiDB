@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import Sambnail from "../molecules/Sambnail.vue";
 import Link from "../atoms/Link.vue";
 

@@ -20,6 +20,24 @@ const routes: Array<RouteConfig> = [
     path: "/search",
     name: "Search",
     component: Search,
+    children: [
+      {
+        path: "work",
+        component: Search,
+      },
+      {
+        path: "comporser",
+        component: Search,
+      },
+      {
+        path: "player",
+        component: Search,
+      },
+      {
+        path: "cd",
+        component: Search,
+      }
+    ]
   },
   {
     path: "/favorite",
