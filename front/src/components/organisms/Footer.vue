@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer id="footer">
     <Navigation />
   </footer>
 </template>
@@ -13,15 +13,24 @@ import Navigation from "../organisms/Navigation.vue"
     Navigation
   }
 })
-export default class Footer extends Vue {}
+export default class Footer extends Vue {
+  public height(): number {
+    let dom = document.getElementById("footer");
+    if (!dom) {
+      return 0;
+    }
+    return dom.clientHeight;
+  }
+}
 </script>
 
 <style scoped lang="scss">
+@import "../../scss/color.scss";
 footer {
-    height: 16vw;
     width: 100vw;
     z-index: 99;
     position: fixed;
     bottom: 0;
+    background-color: $main-theme-color;
 }
 </style>

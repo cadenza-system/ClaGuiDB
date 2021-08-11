@@ -1,33 +1,50 @@
 <template>
 <footer>
     <div id="navigation">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/ranking">Ranking</router-link> |
-      <router-link to="/search">Search</router-link> |
-      <router-link to="/favorite">Favorite</router-link> |
+      <div class="nav-home">
+        <Panel iconPath="nav/home.png" label="HOME" link="/" />
+      </div>
+      <div class="nav-ranking">
+        <Panel iconPath="nav/crown.png" label="RANKING" link="/ranking" />
+      </div>
+      <div class="nav-search">
+        <Panel iconPath="nav/search.png" label="SEARCH" link="/search" />
+      </div>
+      <div class="nav-favorite">
+        <Panel iconPath="nav/heart.png" label="HEART" link="/favorite" />
+      </div>
     </div>
 </footer>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-@Component
+import Panel from "../molecules/NavigationPanel.vue"
+@Component({
+  components: {
+    Panel
+  }
+})
 export default class Navigation extends Vue {}
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import "../../scss/color.scss";
 
-$color: #42b983;
 #navigation {
-  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #navigation a {
   font-weight: bold;
-  color: #2c3e50;
+  color: whitesmoke;
+  height: 12vw;
 }
 
 #navigation a.router-link-exact-active {
-  color: $color;
+  background-color: $dark-theme-color;
 }
 </style>

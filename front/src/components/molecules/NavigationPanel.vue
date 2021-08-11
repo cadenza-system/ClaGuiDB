@@ -1,0 +1,48 @@
+<template>
+  <div class="navigation-panel">
+    <router-link :to="link">
+      <div class="nav-icon">
+        <Img :path="iconPath" />
+      </div>
+      <div class="label">
+        {{ label }}
+      </div>
+    </router-link>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue, Prop } from "vue-property-decorator";
+import Img from "../atoms/Img.vue";
+
+@Component({
+  components: {
+    Img
+  }
+})
+export default class NavigationPanel extends Vue {
+  @Prop() private link!: string;
+  @Prop() private iconPath!: string;
+  @Prop() private label!: string;
+}
+</script>
+
+<style lang="scss">
+.navigation-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25vw;
+  height: 12vw;
+}
+.nav-icon img {
+  width: 20px;
+  height: 20px;
+  margin-top: 2vw;
+  margin-bottom: 2px;
+}
+.label {
+  font-size: 10px;
+}
+
+</style>

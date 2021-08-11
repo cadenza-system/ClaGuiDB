@@ -27,13 +27,22 @@ import UserAgent from "../../typeScript/util/UserAgent"
 export default class Header extends Vue {
   private placreholder = "キーワード検索";
   private isSP = UserAgent.isPhone();
+
+    public height(): number {
+    let dom = document.getElementById("footer");
+    if (!dom) {
+      return 0;
+    }
+    return dom.clientHeight;
+  }
 }
 </script>
 <style scoped lang="scss">
 @import "../../scss/color.scss";
 header {
-    // position: fixed;
-    // z-index: 1;
+    position: fixed;
+    z-index: 1;
+    top: 0;
     width: 100vw;
     background-color: $main-theme-color;
 }
