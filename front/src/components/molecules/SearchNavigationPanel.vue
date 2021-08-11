@@ -1,16 +1,12 @@
 <template>
-  <div class="navigation-panel" :class="setClass()">
-    <router-link :to="link">
-      <div class="nav-icon">
-        <Img :path="iconPath" />
-      </div>
+  <div class="search-navigation-panel" :class="setClass()">
+    <router-link class="content" :to="link">
       <div class="label">
         {{ label }}
       </div>
     </router-link>
   </div>
 </template>
-
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import Img from "../atoms/Img.vue";
@@ -20,9 +16,8 @@ import Img from "../atoms/Img.vue";
     Img
   }
 })
-export default class NavigationPanel extends Vue {
+export default class SearchNavigationPanel extends Vue {
   @Prop() private link!: string;
-  @Prop() private iconPath!: string;
   @Prop() private label!: string;
   @Prop() private onPushed!: boolean;
 
@@ -36,27 +31,29 @@ export default class NavigationPanel extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "../../scss/color.scss";
 
-.navigation-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.search-navigation-panel {
   width: 25vw;
-  height: 12vw;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.nav-icon img {
-  width: 5vw;
-  height: 5vw;
-  margin-top: 2vw;
-  margin-bottom: 2px;
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .label {
+  font-weight: bold;
+  color: whitesmoke;
   font-size: 1vw;
 }
 
 .onPushed {
-  background-color: $dark-theme-color;
+  background-color: $dark-theme-color2;
 }
 </style>

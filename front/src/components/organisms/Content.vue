@@ -1,19 +1,27 @@
 <template>
 <div class="content">
+  <Header style="position: inherit; opacity: 0;"/>
   <slot></slot>
 </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Header from "./Header.vue";
+import Footer from "./Footer.vue";
 
-@Component
+@Component({
+  components: {
+    Header,
+    Footer
+  }
+})
 export default class Content extends Vue {}
 </script>
 
 <style scoped lang="scss">
-.content{
-  padding-top: 30vw;
-  padding-bottom: 10vw;
+.content {
+  height: 100%;
+  margin-bottom: 12vw;
 }
 </style>

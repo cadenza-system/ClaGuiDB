@@ -10,7 +10,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Header from "../../organisms/Header.vue";
 import Footer from "../../organisms/Footer.vue";
-import CurentPushedPanel from "../../../router/nav/CurrentPushedPanel";
+import CurrentPushedPanel from "../../../router/nav/CurrentPushedPanel";
 
 @Component({
   components: {
@@ -20,7 +20,7 @@ import CurentPushedPanel from "../../../router/nav/CurrentPushedPanel";
 })
 export default class Favorite extends Vue {
   constructor() {
-    CurentPushedPanel.pushFavorite();
+    CurrentPushedPanel.pushFavorite();
     super()
   }
 }

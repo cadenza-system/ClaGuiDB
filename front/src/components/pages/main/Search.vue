@@ -18,7 +18,7 @@ import ComporserSearch from "../main/search/ComporserSearch.vue";
 import CdSearch from "../main/search/CdSearch.vue";
 import PlayerSearch from "../main/search/PlayersSearch.vue";
 import CurrentPath from "../../../router/search/CurrentPath";
-import CurentPushedPanel from "../../../router/nav/CurrentPushedPanel";
+import CurrentPushedPanel from "../../../router/nav/CurrentPushedPanel";
 
 @Component({
   components: {
@@ -33,7 +33,7 @@ import CurentPushedPanel from "../../../router/nav/CurrentPushedPanel";
 })
 export default class Search extends Vue {
   constructor() {
-    CurentPushedPanel.pushSearch();
+    CurrentPushedPanel.pushSearch();
     super()
   }
 
@@ -59,3 +59,8 @@ export default class Search extends Vue {
   }
 }
 </script>
+<style lang="scss">
+#search-nav {
+  z-index: 2;
+}
+</style>

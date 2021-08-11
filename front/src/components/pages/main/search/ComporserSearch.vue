@@ -1,14 +1,7 @@
 <template>
   <div class="comporser-search">
-    <Header />
-      <Content>
-        <h1>COMPORSERs</h1>
-        <router-link to="/search/work">work</router-link>
-        <router-link to="/search/comporser">comporser</router-link>
-        <router-link to="/search/player">player</router-link>
-        <router-link to="/search/cd">cd</router-link>
-      </Content>
-    <Footer />
+    <SearchNavigation />
+    <h1>COMPORSERs</h1>
   </div>
 </template>
 
@@ -17,13 +10,21 @@ import { Component, Vue } from "vue-property-decorator";
 import Header from "../../../organisms/Header.vue";
 import Footer from "../../../organisms/Footer.vue";
 import Content from "../../../organisms/Content.vue";
+import CurrentPushedPanel from "@/router/search/CurrentPushedPanel";
+import SearchNavigation from "@/components/organisms/SearchNavigation.vue"
 
 @Component({
   components: {
     Header,
     Footer,
-    Content
+    Content,
+    SearchNavigation
   },
 })
-export default class ComporserSearch extends Vue {}
+export default class ComporserSearch extends Vue {
+  constructor() {
+    CurrentPushedPanel.pushComporser();
+    super()
+  }
+}
 </script>

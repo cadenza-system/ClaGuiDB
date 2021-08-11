@@ -1,5 +1,5 @@
 <template>
-  <footer id="footer">
+  <footer>
     <Navigation />
   </footer>
 </template>
@@ -28,7 +28,7 @@ export default class Footer extends Vue {
 @import "../../scss/color.scss";
 footer {
     width: 100vw;
-    z-index: 99;
+    z-index: 1;
     position: fixed;
     bottom: 0;
     background-color: $main-theme-color;
