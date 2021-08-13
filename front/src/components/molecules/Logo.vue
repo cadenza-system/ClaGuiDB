@@ -18,6 +18,6 @@ export default class Logo extends Vue {}
 
 <style lang="scss">
 .logo img {
-  width: 30vw;
+  width: 20vw;
 }
 </style>
