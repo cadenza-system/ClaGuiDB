@@ -19,7 +19,7 @@ export default class UserIcon extends Vue {}
 <style lang="scss">
 .user-icon img {
     width: 20px;
-    height: 2px;
+    height: 20px;
     border-radius: 40%;
     box-shadow: 0 2px 6px #c1ced7;
     margin: 20px 0 10px;
