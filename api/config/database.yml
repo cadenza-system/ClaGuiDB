@@ -16,10 +16,11 @@ default: &default
   username: root
   password: root
   host: db
+  database: clagui_dev
 
 development:
   <<: *default
-  database: app_development
+  database: clagui_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
