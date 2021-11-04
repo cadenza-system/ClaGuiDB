@@ -42,6 +42,8 @@ export default class SearchNavigationPanel extends Vue {
   justify-content: center;
 }
 .content {
+  width: 25vw;
+  height: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -51,6 +53,7 @@ export default class SearchNavigationPanel extends Vue {
   font-weight: bold;
   color: whitesmoke;
   font-size: 1vw;
+  user-select: none;
 }
 
 .onPushed {

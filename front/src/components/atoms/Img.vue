@@ -21,4 +21,7 @@ export default class Img extends Vue {
 </script>
 
 <style scoped lang="scss">
+img {
+  user-select: none;
+}
 </style>

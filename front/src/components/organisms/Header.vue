@@ -16,7 +16,6 @@ import Logo from "../molecules/Logo.vue";
 import SearchBar from "../molecules/SearchBar.vue";
 import UserIcon from "../molecules/UserIcon.vue";
 import UserAgent from "../../typeScript/util/UserAgent"
-import SearchNavigation from "@/components/organisms/SearchNavigation.vue";
 
 @Component({
   components: {

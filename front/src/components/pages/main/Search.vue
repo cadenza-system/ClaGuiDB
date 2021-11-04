@@ -60,6 +60,15 @@ export default class Search extends Vue {
 }
 </script>
 <style lang="scss">
+@import "../../../scss/color.scss";
+
+#input-area {
+  background-color:$dark-theme-color2 ;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4vw;
+}
 #search-nav {
   z-index: 2;
 }

@@ -54,8 +54,12 @@ export default class NavigationPanel extends Vue {
 }
 .label {
   font-size: 1vw;
+  user-select: none;
 }
 
+router-link {
+  user-select: none;
+}
 .onPushed {
   background-color: $dark-theme-color;
 }
