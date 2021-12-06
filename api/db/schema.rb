@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_023744) do
+ActiveRecord::Schema.define(version: 2021_12_06_161720) do
 
   create_table "CD", primary_key: "ID", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "J_TITLE"
@@ -36,29 +36,6 @@ ActiveRecord::Schema.define(version: 2021_12_06_023744) do
     t.integer "INDEX", null: false
   end
 
-  create_table "MOVIE", primary_key: ["ID", "WORKS_ID"], options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "ID", null: false
-    t.integer "WORKS_ID", null: false
-    t.string "J_SUB_TITLE", null: false
-    t.string "E_SUB_TITLE"
-    t.string "URL", null: false
-    t.integer "TYPE", null: false
-    t.integer "ARRANGER"
-    t.integer "ORDER_NO"
-    t.integer "DEL_FLG", default: 0, null: false
-  end
-
-  create_table "MUSICIAN", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "J_NAME", null: false
-    t.string "E_NAME", null: false
-    t.string "LAST_NAME", null: false
-    t.string "FROM_YEAR", limit: 5
-    t.string "TO_YEAR", limit: 5
-    t.integer "COMP_FLG", default: 0, null: false
-    t.integer "PLAY_FLG", default: 0, null: false
-    t.integer "DEL_FLG", default: 0, null: false
-  end
-
   create_table "MUSICIAN_COUNTRY", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "MUSICIAN_ID", null: false
     t.integer "COUNTRY_ID", null: false
@@ -77,11 +54,36 @@ ActiveRecord::Schema.define(version: 2021_12_06_023744) do
     t.string "NAME", null: false
   end
 
-  create_table "M_TYPE", primary_key: "ID", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "NAME", null: false
+  create_table "m_organizations", primary_key: "ID", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "J_NAME", null: false
+    t.string "E_NAME", null: false
   end
 
-  create_table "WORKS", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "movie_organizations", primary_key: ["MOVIE_ID", "ORGANIZATION_ID"], options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "MOVIE_ID", null: false
+    t.integer "ORGANIZATION_ID", null: false
+  end
+
+  create_table "movies", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "WORKS_ID", null: false
+    t.integer "SUB_NO"
+    t.string "URL", null: false
+    t.integer "ARRANGER"
+    t.integer "DEL_FLG", default: 0, null: false
+  end
+
+  create_table "musicians", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "J_NAME", null: false
+    t.string "E_NAME", null: false
+    t.string "LAST_NAME", null: false
+    t.string "FROM_YEAR", limit: 5
+    t.string "TO_YEAR", limit: 5
+    t.integer "COMP_FLG", default: 0, null: false
+    t.integer "PLAY_FLG", default: 0, null: false
+    t.integer "DEL_FLG", default: 0, null: false
+  end
+
+  create_table "works", primary_key: "ID", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "J_TITLE"
     t.string "E_TITLE"
     t.string "OUPS"
@@ -90,7 +92,15 @@ ActiveRecord::Schema.define(version: 2021_12_06_023744) do
     t.integer "DEL_FLG", default: 0, null: false
   end
 
-  create_table "musicians", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "works_sub", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "WORKS_ID"
+    t.integer "SUB_NO"
+    t.string "J_TITLE"
+    t.string "E_TITLE"
+    t.integer "DEL_FLG", default: 0, null: false
+  end
+
+  create_table "works_subs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

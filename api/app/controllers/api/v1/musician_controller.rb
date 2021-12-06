@@ -15,7 +15,7 @@ module Api
             end
 
             def set_musician
-                @musician = Musician.find(params[:id])
+                @musician = Post.find(params[:id])
             end
         end
     end
