@@ -2,11 +2,11 @@ version: '3'
 
 services:
   web:
-    container_name: ClaGuiDB
+    container_name: api
     build: ./api
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec rails s -p 8080 -b '0.0.0.0'
     ports:
-      - '3000:3000'
+      - '8080:8080'
     depends_on:
       - db
     volumes:
@@ -16,6 +16,7 @@ services:
     stdin_open: true
   db:
     image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     volumes:
       - mysql_data:/var/lib/mysql/
     environment:
@@ -23,11 +24,12 @@ services:
     ports:
       - '3306:3306'
   front:
+    container_name: front
     build: ./front
     volumes:
       - ./front:/app
     ports:
-      - '8080:8080'
+      - '8081:8081'
     tty: true
     stdin_open: true
     command: npm run serve
