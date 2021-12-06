@@ -8,7 +8,7 @@ module Api
                 dataList = []
 
                 for movie in movies do
-                    data = { movie: movie ,work: movie.work ,workSub: movie.workSub, composer: movie.composer }
+                    data = { movie: movie ,work: movie.work ,workSub: movie.workSub, composer: movie.composer, agganger: movie.agganger }
                     dataList.push(data)
                 end
 
@@ -17,7 +17,7 @@ module Api
 
             # GET /movie/:id
             def show
-                render json: { movie: @movie ,work: @work ,workSub: @workSub, composer: @composer }
+                render json: { movie: @movie ,work: @work ,workSub: @workSub, composer: @composer, agganger: @arranger }
             end
 
             def set_movie
@@ -25,6 +25,7 @@ module Api
                 @work = @movie.work
                 @workSub = @movie.workSub
                 @composer = @movie.composer
+                @arranger = @movie.arranger
             end
         end
     end

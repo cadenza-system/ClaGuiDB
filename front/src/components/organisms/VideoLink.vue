@@ -14,9 +14,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import Sambnail from "../molecules/Sambnail.vue";
 import Link from "../atoms/Link.vue";
+import MovieListDto from "../../typeScript/dto/MovieListDto"
 
 @Component({
   components: {
@@ -25,14 +26,15 @@ import Link from "../atoms/Link.vue";
   }
 })
 export default class VideoLink extends Vue {
-  private videoId = "KQYi9D0Zquk";
+  @Prop() private dto!: MovieListDto;
+  private videoId = this.dto.movie().url();
   private link = "#";
 
-  private eTitle = "Aquarelle";
-  private jTitle = "アクアレル";
+  private eTitle = this.dto.work().eTitle();
+  private jTitle = this.dto.work().jTitle();
 
-  private eComporserName = "Sergio Assad";
-  private jComporserName = "セルジオ・アサド";
+  private eComporserName = this.dto.composer().eName();
+  private jComporserName = this.dto.composer().jName();
 
   private title() {
     if (!this.eTitle) {
@@ -47,6 +49,7 @@ export default class VideoLink extends Vue {
   }
 
     private comporserName() {
+
     if (!this.eComporserName) {
       return this.jComporserName;
     }

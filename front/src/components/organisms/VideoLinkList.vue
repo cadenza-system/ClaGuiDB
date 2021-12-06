@@ -1,18 +1,14 @@
 <template>
   <div class="video-link-list">
-    <VideoLink />
-    <VideoLink />
-    <VideoLink />
-    <VideoLink />
-    <VideoLink />
-    <VideoLink />
-    <VideoLink />
-    <VideoLink />
+    <div v-for="movie in dto" :key="movie">
+      <VideoLink :dto="movie" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import MovieListDto from "@/typeScript/dto/MovieListDto";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import VideoLink from "./VideoLink.vue";
 
 @Component({
@@ -20,7 +16,9 @@ import VideoLink from "./VideoLink.vue";
     VideoLink
   }
 })
-export default class VideoLinkList extends Vue {}
+export default class VideoLinkList extends Vue {
+    @Prop() private dto!: MovieListDto[];
+}
 </script>
 
 <style scoped lang="scss">

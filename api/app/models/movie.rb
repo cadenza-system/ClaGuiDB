@@ -11,4 +11,8 @@ class Movie < ApplicationRecord
     def composer
         return Musician.find_by(id: self.work.COMPOSER)
     end
+
+    def arranger
+        render Musician.find_by(id: self.ARRANGER)
+    end
 end
