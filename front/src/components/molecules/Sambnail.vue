@@ -1,7 +1,7 @@
 <template>
   <div class="sambnail">
     <Link :href="link">
-      <img :src="src" :alt="videoId">
+      <img :src="src" alt="">
     </Link>
   </div>
 </template>
@@ -10,6 +10,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import Img from "../atoms/Img.vue";
 import Link from "../atoms/Link.vue";
+
 @Component({
   components: {
     Img,
@@ -19,7 +20,7 @@ import Link from "../atoms/Link.vue";
 export default class Sambnail extends Vue {
   @Prop() private videoId!: string;
   @Prop() private link!: string;
-  private src = "";
+  private src = require(`../../assets/sambnail.png`);
 
   constructor() {
     super();
