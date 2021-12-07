@@ -2,7 +2,7 @@ import Movie from "../model/Movie";
 import Musician from "../model/Musician";
 import Work from "../model/Work";
 
-export default class MovieListDto {
+export default class MovieInfoDto {
     private _movie: Movie;
     private _work: Work;
     private _comporser: Musician;

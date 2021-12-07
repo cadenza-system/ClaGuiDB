@@ -13,6 +13,6 @@ class Movie < ApplicationRecord
     end
 
     def arranger
-        render Musician.find_by(id: self.ARRANGER)
+        return Musician.find_by(id: self.ARRANGER)
     end
 end

@@ -8,7 +8,7 @@ module Api
                 dataList = []
 
                 for movie in movies do
-                    data = { movie: movie ,work: movie.work ,workSub: movie.workSub, composer: movie.composer, agganger: movie.agganger }
+                    data = { movie: movie ,work: movie.work ,workSub: movie.workSub, composer: movie.composer, agganger: movie.arranger }
                     dataList.push(data)
                 end
 

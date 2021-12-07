@@ -1,7 +1,7 @@
 <template>
   <div class="sambnail">
     <Link :href="link">
-      <img :src="loadPath()" alt="">
+      <img :src="src" :alt="videoId">
     </Link>
   </div>
 </template>
@@ -19,9 +19,29 @@ import Link from "../atoms/Link.vue";
 export default class Sambnail extends Vue {
   @Prop() private videoId!: string;
   @Prop() private link!: string;
+  private src = "";
 
-  private loadPath(): string {
-    return `http://img.youtube.com/vi/${this.videoId}/maxresdefault.jpg`;
+  constructor() {
+    super();
+    this.loadPath();
+  }
+  private async loadPath() {
+    const sizeList: string[] = ["maxresdefault", "sddefault", "hqdefault", "mqdefault", "default"];
+
+    for (const size of sizeList) {
+      const url = `http://img.youtube.com/vi/${this.videoId}/${size}.jpg`
+      if(await this.checkStatus(url)) {
+        this.src = url;
+        return;
+      }
+    }
+
+    this.src = `http://img.youtube.com/vi/${this.videoId}/0.jpg`
+  }
+
+  private async checkStatus(url: string): Promise<boolean>{
+    const res = await fetch(url);
+    return res.ok
   }
 }
 </script>

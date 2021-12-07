@@ -1,42 +1,30 @@
 <template>
   <div class="home">
-    <Header/>
-    <Content>
-      <VideoLinkList :dto="dto" />
-    </Content>
-    <Footer/>
+    <HomeTemplate :movieInfoDto="movieInfoDto" />
   </div>
 </template>
 
 <script scoped lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Header from "../../organisms/Header.vue";
-import VideoLinkList from "../../organisms/VideoLinkList.vue"
-import Footer from "../../organisms/Footer.vue";
-import Content from "../../organisms/Content.vue";
-import CurrentPushedPanel from "../../../router/nav/CurrentPushedPanel";
+import HomeTemplate from "../../templates/main/Home.vue"
 import MovieListDao from "../../../typeScript/dao/MovieListDao"
-import MovieListDto from "../../../typeScript/dto/MovieListDto"
+import MovieInfoDto from "../../../typeScript/dto/MovieInfoDto"
 
 @Component({
   components: {
-    Header,
-    VideoLinkList,
-    Footer,
-    Content
+    HomeTemplate
   },
 })
 export default class Home extends Vue {
-  private dto: MovieListDto[] | null = null;
+  private movieInfoDto?: MovieInfoDto[] | null = null;
+
   constructor() {
     super();
-    CurrentPushedPanel.pushHome();
     this.fetchData();
   }
-
   async fetchData() {
-    this.dto = await MovieListDao.fetchMovies();
     console.log("fetchData")
+    this.movieInfoDto = await MovieListDao.fetchMovies();
   }
 }
 </script>

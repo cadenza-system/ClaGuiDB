@@ -17,7 +17,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import Sambnail from "../molecules/Sambnail.vue";
 import Link from "../atoms/Link.vue";
-import MovieListDto from "../../typeScript/dto/MovieListDto"
+import MovieListDto from "../../typeScript/dto/MovieInfoDto"
 
 @Component({
   components: {
@@ -48,7 +48,7 @@ export default class VideoLink extends Vue {
     return `${this.eTitle} | ${this.jTitle}`;
   }
 
-    private comporserName() {
+  private comporserName() {
 
     if (!this.eComporserName) {
       return this.jComporserName;

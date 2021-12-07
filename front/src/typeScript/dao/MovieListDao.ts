@@ -1,13 +1,13 @@
-import MovieListDto from "../dto/MovieListDto";
+import MovieInfoDto from "../dto/MovieInfoDto";
 import Movie from "../model/Movie";
 import Musician from "../model/Musician";
 import Work from "../model/Work";
 import WorkSub from "../model/WorkSub";
 import Year from "../model/Yaer";
 
-export default class HomeDao {
-    public static async fetchMovies(): Promise<MovieListDto[]> {
-        const dtoList: MovieListDto[] = []
+export default class MovieListDao {
+    public static async fetchMovies(): Promise<MovieInfoDto[]> {
+        const dtoList: MovieInfoDto[] = []
 
         // fetch
         const res = await fetch('http://localhost:3000/api/v1/movie/');
@@ -34,7 +34,7 @@ export default class HomeDao {
             const composerJson = data.composer;
             const composer = new Musician(composerJson.ID, composerJson.J_NAME, composerJson.E_NAME, new Year(composerJson.FROM_YEAR,composerJson.TO_YEAR))
 
-            dtoList.push(new MovieListDto(movie, work, composer));
+            dtoList.push(new MovieInfoDto(movie, work, composer));
         }
 
         return dtoList;
