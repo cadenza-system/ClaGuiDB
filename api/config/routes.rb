@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'mrails/movies'
   namespace 'api' do
     namespace 'v1' do
+      get "movie/search/:param" => "movie#search"
       resources :musician
       resources :movie
     end

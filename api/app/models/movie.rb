@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-
+    belongs_to :works
     def work
         return Work.find_by(id: self.WORKS_ID)
     end
