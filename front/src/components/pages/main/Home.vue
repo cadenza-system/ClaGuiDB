@@ -14,17 +14,33 @@ import MovieInfoDto from "../../../typeScript/dto/MovieInfoDto"
   components: {
     HomeTemplate
   },
+  watch: {
+    $route() {
+      this.$router.go(0)
+    }
+  }
 })
 export default class Home extends Vue {
   private movieInfoDto?: MovieInfoDto[] | null = null;
 
   constructor() {
     super();
-    this.fetchData();
+    const query = this.$route.query.v
+    console.log(`query: ${query}`)
+    if (query) {
+      this.searchMovie(query.toString())
+      return
+    }
+    this.fetchMovie();
   }
-  async fetchData() {
-    console.log("fetchData")
+  async fetchMovie() {
+    console.log("fetchMovie")
     this.movieInfoDto = await MovieListDao.fetchMovies();
+  }
+
+    async searchMovie(params: string) {
+      params = params.replace('　', ' ');
+      this.movieInfoDto = await MovieListDao.searchMovies(params);
   }
 }
 </script>

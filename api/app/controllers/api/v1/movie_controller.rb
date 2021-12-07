@@ -24,7 +24,6 @@ module Api
             def search
                 movies = Movie.all
                 dataList = []
-                param = 
                 for movie in movies do
                     if (isMatch(movie, params[:param]))
                         data = { movie: movie ,work: movie.work ,workSub: movie.workSub, composer: movie.composer, agganger: movie.arranger }
@@ -43,7 +42,7 @@ module Api
                 @arranger = @movie.arranger
             end
 
-            def isMatch(movie, param)
+            def isMatch(movie, query)
                 strList = []
                 strList.push(movie.work.J_TITLE)
                 strList.push(movie.work.E_TITLE)
@@ -60,13 +59,21 @@ module Api
                     strList.push(arranger.E_NAME)
                 end
 
-                for str in strList do
-                    if (str.downcase.include?(param))
-                        return true
+                params = query.split
+
+                for param in params do
+                    isMatch = false
+                    for str in strList do
+                        if (str.downcase.include?(param))
+                            isMatch =  true
+                        end
+                    end
+                    if (!isMatch)
+                        return
                     end
                 end
 
-                return false
+                return true
             end
         end
     end
