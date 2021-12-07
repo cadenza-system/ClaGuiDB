@@ -44,39 +44,28 @@ module Api
             end
 
             def isMatch(movie, param)
-                if (movie.work.J_TITLE.include?(param))
-                    return true
-                end
-                if (movie.work.E_TITLE.include?(param))
-                    return true
-                end
-
+                strList = []
+                strList.push(movie.work.J_TITLE)
+                strList.push(movie.work.E_TITLE)
+                strList.push(movie.composer.J_NAME)
+                strList.push(movie.composer.E_NAME)
                 workSub = movie.workSub
                 if workSub != nil
-                    if (movie.workSub.J_TITLE.include?(param))
-                        return true
-                    end
-                    if (movie.workSub.E_TITLE.include?(param))
-                        return true
-                    end
+                    strList.push(workSub.J_TITLE)
+                    strList.push(workSub.E_TITLE)
                 end
-
-                if (movie.composer.J_NAME.include?(param))
-                    return true
-                end
-                if (movie.composer.E_NAME.include?(param))
-                    return true
-                end
-
                 arranger = movie.arranger
                 if arranger != nil
-                    if (arranger.J_NAME.include?(param))
-                        return true
-                    end
-                    if (arranger.E_NAME.include?(param))
+                    strList.push(arranger.J_NAME)
+                    strList.push(arranger.E_NAME)
+                end
+
+                for str in strList do
+                    if (str.downcase.include?(param))
                         return true
                     end
                 end
+
                 return false
             end
         end
