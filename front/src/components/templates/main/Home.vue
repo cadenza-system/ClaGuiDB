@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Header/>
+    <Header @onSearch="onSearch"/>
     <Content>
       <VideoLinkList :movieInfoDto="movieInfoDto" />
     </Content>
@@ -9,7 +9,7 @@
 </template>
 
 <script scoped lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 import Header from "../../organisms/Header.vue";
 import VideoLinkList from "../../organisms/VideoLinkList.vue"
 import Footer from "../../organisms/Footer.vue";
@@ -30,6 +30,11 @@ export default class Home extends Vue {
   constructor() {
     super();
     CurrentPushedPanel.pushHome();
+  }
+
+  @Emit()
+  onSearch(value: string) {
+    this.$emit("onSearch", value)
   }
 }
 </script>

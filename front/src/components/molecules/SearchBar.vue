@@ -1,12 +1,12 @@
 <template>
   <div class="search-bar input-group">
-    <SearchInput :placeholder="placeholder"/>
+    <SearchInput :placeholder="placeholder" @onInput="input"/>
     <Button v-if="showButton" :name="buttonName"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 import SearchInput from "../atoms/SearchInput.vue";
 import Button from "../atoms/Button.vue";
 
@@ -19,8 +19,21 @@ import Button from "../atoms/Button.vue";
 export default class SearchBar extends Vue {
   @Prop() private placeholder?: string;
   @Prop() private showButton!: boolean;
+  private inputValue = "";
 
   private buttonName = "SEARCH";
+
+  input(value: string) {
+    console.log(`SearchBarinput:${value}`)
+    this.inputValue = value;
+    this.onInput();
+  }
+
+  @Emit("onSearch")
+  onInput(): string {
+    console.log(`SearchBaroninput:${this.inputValue}`)
+    return this.inputValue;
+  }
 }
 </script>
 

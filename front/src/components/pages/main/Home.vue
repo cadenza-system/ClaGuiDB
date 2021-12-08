@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HomeTemplate :movieInfoDto="movieInfoDto" />
+    <HomeTemplate :movieInfoDto="movieInfoDto" @onSearch="searchMovie"/>
   </div>
 </template>
 
@@ -13,12 +13,12 @@ import MovieInfoDto from "../../../typeScript/dto/MovieInfoDto"
 @Component({
   components: {
     HomeTemplate
-  },
-  watch: {
-    $route() {
-      this.$router.go(0)
-    }
   }
+  // watch: {
+  //   $route() {
+  //     this.$router.go(0)
+  //   }
+  // }
 })
 export default class Home extends Vue {
   private movieInfoDto?: MovieInfoDto[] | null = null;
@@ -38,7 +38,8 @@ export default class Home extends Vue {
     this.movieInfoDto = await MovieListDao.fetchMovies();
   }
 
-    async searchMovie(params: string) {
+  async searchMovie(params: string) {
+      console.log(`search:${params}`)
       params = params.replace('　', ' ');
       this.movieInfoDto = await MovieListDao.searchMovies(params);
   }
